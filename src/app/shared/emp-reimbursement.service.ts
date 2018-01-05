@@ -31,31 +31,35 @@ export class EmpReimbursementService {
   }
 
   public approveReimbursement(requesterId: number, reimbursementId: number) {
-    this.httpClient.post('http://localhost:8082/TRMS/approve-reimbursement',
-      {
-        'reimbursementId': reimbursementId,
-        'requesterId': requesterId,
-        'approverId' : parseInt(sessionStorage.getItem('employeeID')),
-        'approverEmployeeType' : sessionStorage.getItem('employeeType')
-      },
-      {
-        headers: {
-          'Content-Type' : 'application/json'
+    if(sessionStorage.getItem('employeeType') !== 'Employee') {
+      this.httpClient.post('http://localhost:8082/TRMS/approve-reimbursement',
+        {
+          'reimbursementId': reimbursementId,
+          'requesterId': requesterId,
+          'approverId' : parseInt(sessionStorage.getItem('employeeID')),
+          'approverEmployeeType' : sessionStorage.getItem('employeeType')
+        },
+        {
+          headers: {
+            'Content-Type' : 'application/json'
+          }
         }
-      }
-    ).subscribe(response => {
-      this.router.navigateByUrl('emp-reimbursement-view');
-    });
+      ).subscribe(response => {
+        this.router.navigateByUrl('emp-reimbursement-view');
+      });
+    }
   }
 
   public disapproveReimbursement(requesterId: number, reimbursementId:number) {
-    this.httpClient.post('http://localhost:8082/TRMS/disapprove-reimbursement',
-      {
-        'reimbursementId' : reimbursementId,
-        'disapproverEmployeeType' : sessionStorage.getItem('employeeType')
-      }
-    ).subscribe(response => {
-      this.router.navigateByUrl('emp-reimbursement-view');
-    });
+    if(sessionStorage.getItem('employeeType') !== 'Employee') {
+      this.httpClient.post('http://localhost:8082/TRMS/disapprove-reimbursement',
+        {
+          'reimbursementId' : reimbursementId,
+          'disapproverEmployeeType' : sessionStorage.getItem('employeeType')
+        }
+      ).subscribe(response => {
+        this.router.navigateByUrl('emp-reimbursement-view');
+      });
+    }
   }
 }
