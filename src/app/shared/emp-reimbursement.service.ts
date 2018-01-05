@@ -47,4 +47,15 @@ export class EmpReimbursementService {
       this.router.navigateByUrl('emp-reimbursement-view');
     });
   }
+
+  public disapproveReimbursement(requesterId: number, reimbursementId:number) {
+    this.httpClient.post('http://localhost:8082/TRMS/disapprove-reimbursement',
+      {
+        'reimbursementId' : reimbursementId,
+        'disapproverEmployeeType' : sessionStorage.getItem('employeeType')
+      }
+    ).subscribe(response => {
+      this.router.navigateByUrl('emp-reimbursement-view');
+    });
+  }
 }

@@ -28,4 +28,8 @@ export class EmpReimbursementDetailComponent implements OnInit {
     this.empReimbursementService.approveReimbursement(this.reimbursement.requesterId, this.reimbursement.reimbursementId);
   }
 
+  public disapprove() {
+    this.empReimbursementService.disapproveReimbursement(this.reimbursement.requesterId, this.reimbursement.reimbursementId);
+  }
+
 }
