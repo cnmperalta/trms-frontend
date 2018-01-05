@@ -10,4 +10,5 @@
     </div>
     <button (click)="sendLogin()" type="submit" class="btn btn-primary">Log in</button>
   </form>
+  <span [hidden]="!wrongCredentialsMessage" class="alert alert-danger">{{ wrongCredentialsMessage }}</span><br />
 </div>

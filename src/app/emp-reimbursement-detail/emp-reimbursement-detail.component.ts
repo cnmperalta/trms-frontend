@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EmpReimbursementDetailComponent implements OnInit {
   public reimbursement;
+  public showApproveDisapprove: boolean;
 
   constructor(private empReimbursementService: EmpReimbursementService, private route: ActivatedRoute) { }
 
@@ -17,6 +18,14 @@ export class EmpReimbursementDetailComponent implements OnInit {
     this.empReimbursementService.getEmployeeReimbursementById(rid).subscribe( response => {
       this.reimbursement = response;
     });
+    if(sessionStorage.getItem('employeeType') !== 'Employee')
+      this.showApproveDisapprove = true;
+    else
+      this.showApproveDisapprove = false;
+  }
+
+  public approve() {
+    this.empReimbursementService.approveReimbursement(this.reimbursement.requesterId, this.reimbursement.reimbursementId);
   }
 
 }
