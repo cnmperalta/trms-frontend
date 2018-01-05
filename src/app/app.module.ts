@@ -16,6 +16,8 @@ import { GradingFormatService } from './shared/grading-format.service';
 import { EventTypeService } from './shared/event-type.service';
 import { LoginService } from './shared/login.service';
 import { LogoutComponent } from './logout/logout.component';
+import { EmpReimbursementDetailComponent } from './emp-reimbursement-detail/emp-reimbursement-detail.component';
+import { EmpReimbursementService } from './shared/emp-reimbursement.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { LogoutComponent } from './logout/logout.component';
     ChangePasswordComponent,
     EmpReimbursementViewComponent,
     NewReimbursementComponent,
-    LogoutComponent
+    LogoutComponent,
+    EmpReimbursementDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,7 @@ import { LogoutComponent } from './logout/logout.component';
     routing,
     HttpClientModule
   ],
-  providers: [GradingFormatService, EventTypeService, LoginService],
+  providers: [GradingFormatService, EventTypeService, LoginService, EmpReimbursementService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,15 @@
-<p>
-  emp-reimbursement-view works!
-</p>
+<div class="container">
+  <h4>Your Reimbursements</h4>
+  <table>
+    <tr>
+      <th>Date Submitted</th>
+      <th>Event Name</th>
+      <th>Status</th>
+    </tr>
+    <tr *ngFor="let empReim of empReimbursements">
+      <td>{{ empReim.dateSubmitted.monthValue }}/{{ empReim.dateSubmitted.dayOfMonth }}/{{ empReim.dateSubmitted.year }}</td>
+      <td><a [routerLink]="[ '/emp-reimbursement', empReim.reimbursementId ]">{{ empReim.event.eventName }}</a></td>
+      <td>{{ empReim.reimbursementStatus }}</td>
+    </tr>
+  </table>
+</div>

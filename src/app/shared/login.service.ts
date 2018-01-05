@@ -27,7 +27,6 @@ export class LoginService {
       sessionStorage.setItem('employeeType', String(response['employeeType']));
       if(response['lastLogin'] != null)
         sessionStorage.setItem('loggedIn', 'true');
-      console.log(response);
     });
 
     return loginObs;
