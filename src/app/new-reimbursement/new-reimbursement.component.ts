@@ -78,8 +78,6 @@ export class NewReimbursementComponent implements OnInit {
       );
 
       if(response.ok) {
-        // let jsonResponse = await response.json();
-        // console.log(jsonResponse);
         this.router.navigateByUrl('emp-reimbursement-view');
       }
     } catch (error) {

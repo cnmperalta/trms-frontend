@@ -19,8 +19,6 @@ export class ChangePasswordComponent implements OnInit {
 
   public async updatePassword() {
     this.newPasswordErrorMessage = "";
-    console.log(this.newPassword);
-    console.log(this.confirmNewPassword);
     if(this.newPassword === this.confirmNewPassword) {
       try {
         let response = await fetch(
@@ -39,7 +37,6 @@ export class ChangePasswordComponent implements OnInit {
   
         if(response.ok) {
           let jsonResponse = await response.json();
-          console.log(jsonResponse);
           if(jsonResponse['loggedIn'] === true) {
             sessionStorage.setItem('loggedIn', 'true');
             this.router.navigateByUrl('/emp-reimbursement-view');
